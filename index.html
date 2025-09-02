@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christopher Salas - Off-Season Training Program</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+  
+  :root { 
+    --black: #1A1A1A;
+    --yellow: #F5C842;
+    --gold: #FFD700;
+    --white: #FFFFFF;
+    --gray: #B0B0B0;
+    --dark-gray: #2A2A2A;
+    --border: #3A3A3A;
+    --green: #4CAF50;
+    --red: #FF5722;
+    --blue: #4A90E2;
+    --shadow: rgba(0,0,0,0.5);
+    --glow: rgba(245, 200, 66, 0.5);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(245, 200, 66, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(245, 200, 66, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  header {
+    background: linear-gradient(135deg, var(--dark-gray) 0%, #1f1f1f 100%);
+    padding: 20px;
+    border-bottom: 3px solid var(--yellow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 10px 30px var(--shadow);
+  }
+  
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .athlete-details {
+    border-left: 3px solid var(--yellow);
+    padding-left: 30px;
+  }
+  
+  .athlete-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5em;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    text-shadow: 0 0 25px var(--glow);
+  }
+  
+  .athlete-meta {
+    color: var(--gray);
+    font-size: 1em;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  nav {
+    background: rgba(42, 42, 42, 0.98);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 93px;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+  }
+  
+  .nav-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  
+  .nav-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    background: var(--dark-gray);
+    color: var(--gray);
+    border: 2px solid var(--border);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 1.15em;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .nav-btn:hover {
+    background: rgba(245, 200, 66, 0.15);
+    border-color: var(--yellow);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  .nav-btn.active {
+    background: var(--yellow);
+    color: var(--black);
+    border-color: var(--yellow);
+    font-weight: bold;
+    box-shadow: 0 0 20px var(--glow);
+  }
+  
+  .week-select-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    background: var(--dark-gray);
+    color: var(--gray);
+    border: 2px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+  }
+
+  .week-select-btn:hover {
+    background: rgba(245, 200, 66, 0.15);
+    border-color: var(--yellow);
+    color: var(--white);
+  }
+
+  .week-select-btn.active {
+    background: var(--yellow);
+    color: var(--black);
+    border-color: var(--yellow);
+    font-weight: bold;
+  }
+  
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .card {
+    background: linear-gradient(135deg, var(--dark-gray) 0%, #222 100%);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  }
+  
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2em;
+    color: var(--yellow);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px var(--glow);
+  }
+  
+  .day-card {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .day-card:hover {
+    border-color: var(--yellow);
+    box-shadow: 0 0 20px rgba(245, 200, 66, 0.1);
+  }
+  
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .day-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8em;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+  
+  .day-type {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .print-btn {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  
+  .print-btn:hover {
+    background: #5BA0F2;
+    transform: scale(1.05);
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  
+  .stat-box {
+    background: rgba(0,0,0,0.4);
+    border: 2px solid var(--yellow);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(245, 200, 66, 0.2);
+  }
+  
+  .stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5em;
+    color: var(--yellow);
+    text-shadow: 0 0 15px var(--glow);
+  }
+  
+  .stat-label {
+    color: var(--gray);
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .exercise-section {
+    margin-bottom: 25px;
+  }
+  
+  .section-title {
+    color: var(--gold);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--yellow);
+    border-radius: 2px;
+  }
+  
+  .exercise-item {
+    background: rgba(245, 200, 66, 0.05);
+    border-left: 3px solid var(--yellow);
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .exercise-item:hover {
+    background: rgba(245, 200, 66, 0.1);
+    transform: translateX(5px);
+  }
+  
+  .exercise-name {
+    color: var(--white);
+    font-weight: 500;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .exercise-details {
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    min-width: 100px;
+  }
+  
+  .exercise-link {
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--yellow);
+    transition: all 0.3s ease;
+  }
+  
+  .exercise-link:hover {
+    color: var(--yellow);
+    text-shadow: 0 0 10px var(--glow);
+  }
+  
+  .weight-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .weight-input {
+    background: var(--black);
+    border: 1px solid var(--yellow);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+  }
+  
+  .weight-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--glow);
+    background: #1f1f1f;
+  }
+  
+  .weight-saved {
+    color: var(--green);
+    font-size: 0.8em;
+    display: none;
+  }
+  
+  .weight-saved.show {
+    display: inline;
+    animation: fadeInOut 2s ease;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  .info-box {
+    background: linear-gradient(135deg, rgba(245, 200, 66, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+    border: 1px solid rgba(245, 200, 66, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  
+  .info-box h3 {
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .warning-box {
+    background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(255, 87, 34, 0.05) 100%);
+    border: 1px solid var(--red);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .warning-box h3 {
+    color: var(--red);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  
+  li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+    font-weight: bold;
+  }
+  
+  .data-btn {
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .data-btn:hover {
+    background: #5CBF60;
+    transform: scale(1.05);
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  .modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: var(--dark-gray);
+    border: 2px solid var(--yellow);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border);
+  }
+  
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8em;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    color: var(--yellow);
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 0.5;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .close-btn:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px var(--glow);
+  }
+  
+  .sub-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: var(--black);
+    border: 1px solid var(--yellow);
+    color: var(--white);
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .sub-button {
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .sub-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--glow);
+  }
+  
+  .substitution-result {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(245, 200, 66, 0.1);
+    border: 1px solid var(--yellow);
+    border-radius: 8px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+  
+  .substitution-result h4 {
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    margin-bottom: 10px;
+  }
+  
+  .sub-link {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+  }
+  
+  .sub-link:hover {
+    background: var(--yellow);
+    color: var(--black);
+  }
+  
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+    
+    .athlete-details {
+      border-left: none;
+      border-top: 3px solid var(--yellow);
+      padding-left: 0;
+      padding-top: 15px;
+      width: 100%;
+    }
+    
+    .athlete-name {
+      font-size: 1.8em;
+    }
+    
+    .day-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .exercise-item {
+      flex-direction: column;
+      text-align: left;
+    }
+    
+    .weight-input {
+      width: 100%;
+      max-width: 150px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="athlete-details">
+      <div class="athlete-name">CHRISTOPHER SALAS</div>
+      <div class="athlete-meta">300 LB • FOOTBALL - OFFENSIVE LINE • OFF-SEASON • KNEE-FRIENDLY</div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-wrapper">
+    <button class="nav-btn active" onclick="showTab('overview')">OVERVIEW</button>
+    <button class="nav-btn" onclick="showTab('weekly')">WEEKLY PROGRAM</button>
+    <button class="nav-btn" onclick="showTab('nutrition')">NUTRITION</button>
+    <button class="nav-btn" onclick="showTab('recovery')">RECOVERY</button>
+  </div>
+</nav>
+
+<main>
+  <!-- Overview Tab -->
+  <div class="tab-content active" id="overview">
+    <div class="card">
+      <h2 class="card-title">ATHLETE PROFILE</h2>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value">300 LB</div>
+          <div class="stat-label">Bodyweight</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">305 LB</div>
+          <div class="stat-label">Target Weight</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">60-80 MIN</div>
+          <div class="stat-label">Session Length</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">6 WEEKS</div>
+          <div class="stat-label">Program Duration</div>
+        </div>
+      </div>
+      
+      <div class="info-box">
+        <h3>PRIMARY GOALS</h3>
+        <ul>
+          <li>Build explosive pop off the line</li>
+          <li>Strengthen pass protection</li>
+          <li>Hold/slowly rise toward 305 lb</li>
+          <li>Protect left knee and right shoulder</li>
+        </ul>
+      </div>
+      
+      <div class="warning-box">
+        <h3>INJURY CONSIDERATIONS</h3>
+        <ul>
+          <li>Left knee - avoid deep flexion if painful</li>
+          <li>Right shoulder - no straight-bar overhead, no strict pull-ups</li>
+          <li>Use neutral grips and pain-free ranges only</li>
+          <li>If new pain: remove trigger, do mid-range ISO 30-45s</li>
+        </ul>
+      </div>
+      
+      <button class="data-btn" onclick="exportData()">
+        <span>📥</span> EXPORT DATA
+      </button>
+    </div>
+  </div>
+
+  <!-- Weekly Program Tab -->
+  <div class="tab-content" id="weekly">
+    <div class="card">
+      <h2 class="card-title">WEEKLY TRAINING SCHEDULE</h2>
+      
+      <!-- Week Selector -->
+      <div style="text-align: center; margin: 20px 0;">
+        <p style="color: var(--gray); margin-bottom: 15px;">SELECT YOUR CURRENT TRAINING WEEK:</p>
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+          <button class="week-select-btn active" onclick="selectWeek(1)">WEEK 1</button>
+          <button class="week-select-btn" onclick="selectWeek(2)">WEEK 2</button>
+          <button class="week-select-btn" onclick="selectWeek(3)">WEEK 3</button>
+          <button class="week-select-btn" onclick="selectWeek(4)">WEEK 4</button>
+          <button class="week-select-btn" onclick="selectWeek(5)">WEEK 5</button>
+          <button class="week-select-btn" onclick="selectWeek(6)">WEEK 6</button>
+        </div>
+      </div>
+      
+      <div class="info-box" id="week-info">
+        <h3>WEEK 1 - FOUNDATION</h3>
+        <p>Focus: Movement patterns, base building, technique refinement</p>
+      </div>
+      
+      <!-- Monday - Day 1 Lower -->
+      <div class="day-card" id="monday-workout">
+        <div class="day-header">
+          <div class="day-title">MONDAY - DAY 1 LOWER</div>
+          <div class="day-type">Heavy Neural + Power</div>
+          <button class="print-btn" onclick="printDay('monday')">PRINT WORKOUT</button>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">PRE-WORKOUT PROTOCOL</div>
+          <ul>
+            <li style="color: var(--yellow); font-weight: bold;">Perform Daily Vault Work</li>
+            <li style="color: var(--yellow); font-weight: bold;"><a href="https://youtu.be/9n7NwYSX1lI" target="_blank" class="exercise-link" style="color: var(--yellow);">Perform Lower Dynamic Warmup</a></li>
+          </ul>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">FIELD/POWER (10-12 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/vJ5rkJYFj2g" target="_blank" class="exercise-link">Footwork Sled Push</a></span>
+            <span class="exercise-details">2×8 (7s work/20s rest)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="sled-push-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/exXHk54fKI4" target="_blank" class="exercise-link">Box Jump</a></span>
+            <span class="exercise-details">3×5</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Height (in)" data-exercise="box-jump-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">WEIGHT ROOM (35-50 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/UWnTWC9IAuA" target="_blank" class="exercise-link">Banded Pass Set Power Step</a></span>
+            <span class="exercise-details">3×10/10 (R/L)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band" data-exercise="power-step-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/RIU8zWyBAB4" target="_blank" class="exercise-link">Barbell Step Up (12-16" Box)</a></span>
+            <span class="exercise-details">3×5/5</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="step-up-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/1e2XoIsloGU" target="_blank" class="exercise-link">Banded Pass Set Kick Step</a></span>
+            <span class="exercise-details">3×10/10 (R/L)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band" data-exercise="kick-step-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/LnGHXm-iXb4" target="_blank" class="exercise-link">Box Squat (optional Chains/Bands)</a></span>
+            <span class="exercise-details">4×5 (5 sec eccentric)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="box-squat-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/FpFlL3htbiw" target="_blank" class="exercise-link">Body Weight Hip Airplane</a></span>
+            <span class="exercise-details">4×6/6</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="BW" data-exercise="hip-airplane-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/hpTLF7uAeHU" target="_blank" class="exercise-link">DB/KB Single leg RDL</a></span>
+            <span class="exercise-details">2×10</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="sl-rdl-mon" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">RECOVERY</div>
+          <ul>
+            <li>Couch stretch 1×60 s/side, adductor long lunge 1×45 s/side, calf stretch 1×60 s/side</li>
+            <li>2 min nasal down-shift</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Tuesday - Day 2 Upper -->
+      <div class="day-card" id="tuesday-workout">
+        <div class="day-header">
+          <div class="day-title">TUESDAY - DAY 2 UPPER</div>
+          <div class="day-type">Speed + Armor</div>
+          <button class="print-btn" onclick="printDay('tuesday')">PRINT WORKOUT</button>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">PRE-WORKOUT PROTOCOL</div>
+          <ul>
+            <li style="color: var(--yellow); font-weight: bold;">Perform Daily Vault Work</li>
+            <li style="color: var(--yellow); font-weight: bold;"><a href="https://youtu.be/oT3TC0wZ9VY" target="_blank" class="exercise-link" style="color: var(--yellow);">Perform Upper Dynamic Warmup</a></li>
+          </ul>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">FIELD/POWER (8-10 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/sKgnfF3TZyU" target="_blank" class="exercise-link">Down the Wall Med Ball Punch</a></span>
+            <span class="exercise-details">2×10/10 L/R</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Ball (lb)" data-exercise="med-ball-tue" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">WEIGHT ROOM (25-35 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/Bmijfk3zevc" target="_blank" class="exercise-link">Barbell Bench Press</a></span>
+            <span class="exercise-details">3×5</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="bench-tue" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/vCG3rTi2_ZI" target="_blank" class="exercise-link">Band Pull Aparts</a></span>
+            <span class="exercise-details">3×12</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band" data-exercise="pull-apart-tue" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/XpfzsSw_U_Q" target="_blank" class="exercise-link">TRX Row</a></span>
+            <span class="exercise-details">2×8 (6 sec negative)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Angle" data-exercise="trx-row-tue" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">RECOVERY</div>
+          <ul>
+            <li>Sleeper 2×45 s/side, wall slides 2×10, pec minor smash 60 s, open-book 8/side</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Wednesday - Recovery -->
+      <div class="day-card" id="wednesday-workout">
+        <div class="day-header">
+          <div class="day-title">WEDNESDAY - RECOVERY</div>
+          <div class="day-type">Tissue + Aerobic Reset</div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">OPTIONAL AEROBIC</div>
+          <ul>
+            <li>Nasal walk/bike 20-30 min</li>
+            <li>No lifting today</li>
+          </ul>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">MOBILITY (20-25 MIN)</div>
+          <ul>
+            <li>Feet/ankles: plantar roll 90s/foot, band DF 2×45-60s/side, slant-board lowers 2×12</li>
+            <li>Knees/adductors: wall-sit 2×45s, split-squat ISO mid-range 2×30-45s/side, frog rocks 2×12</li>
+            <li>T-spine: cat-camel 8, open-book 8/side</li>
+          </ul>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">SAUNA (OPTIONAL)</div>
+          <ul>
+            <li>2 rounds × 10-15 min</li>
+            <li>Re-hydrate +1 L water +1 g sodium after</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Thursday - Day 3 Lower -->
+      <div class="day-card" id="thursday-workout">
+        <div class="day-header">
+          <div class="day-title">THURSDAY - DAY 3 LOWER</div>
+          <div class="day-type">Single Leg + Stability</div>
+          <button class="print-btn" onclick="printDay('thursday')">PRINT WORKOUT</button>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">PRE-WORKOUT PROTOCOL</div>
+          <ul>
+            <li style="color: var(--yellow); font-weight: bold;">Perform Daily Vault Work</li>
+            <li style="color: var(--yellow); font-weight: bold;"><a href="https://youtu.be/9n7NwYSX1lI" target="_blank" class="exercise-link" style="color: var(--yellow);">Perform Lower Dynamic Warmup</a></li>
+          </ul>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">FIELD/POWER (10-12 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/vJ5rkJYFj2g" target="_blank" class="exercise-link">Footwork Sled Push</a></span>
+            <span class="exercise-details">2×8 (7s work/20s rest)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="sled-push-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">WEIGHT ROOM (30-40 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/uKC7iY9FlKc" target="_blank" class="exercise-link">Single Leg Box Jump</a></span>
+            <span class="exercise-details">2×5/5</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Height (in)" data-exercise="sl-box-jump-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/xgXJrgJzano" target="_blank" class="exercise-link">Banded Lateral Neck Kick to Power</a></span>
+            <span class="exercise-details">2×6 (R/L)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band" data-exercise="kick-power-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/xgXJrgJzano" target="_blank" class="exercise-link">Banded Lateral Neck Power to Kick</a></span>
+            <span class="exercise-details">2×6 (R/L)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band" data-exercise="power-kick-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/tNK_boQhqJQ" target="_blank" class="exercise-link">Trap Bar RFESS</a></span>
+            <span class="exercise-details">2×5/5 (3 sec eccentric)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="rfess-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/P28QxLx-f74" target="_blank" class="exercise-link">Body Weight Cross Over Step Up</a></span>
+            <span class="exercise-details">2×5/5</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="BW" data-exercise="crossover-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/gJ6711e5TDc" target="_blank" class="exercise-link">Goblet Squat</a></span>
+            <span class="exercise-details">2×10</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="goblet-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/y77mkqxs3nY" target="_blank" class="exercise-link">Dumbbell + Iron Neck Curtsy Lunge</a></span>
+            <span class="exercise-details">2×8/8</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="curtsy-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/yQwueSUcZkI" target="_blank" class="exercise-link">Elevated Single Leg Glute Bridge</a></span>
+            <span class="exercise-details">2×8/8 (slow eccentric)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="BW" data-exercise="glute-bridge-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/QH1CaFYeiQA" target="_blank" class="exercise-link">Single Leg Standing Calf Raise</a></span>
+            <span class="exercise-details">2×15 (slow eccentric)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="calf-raise-thu" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">RECOVERY</div>
+          <ul>
+            <li>Couch stretch 1×60 s/side, adductor long lunge 1×45 s/side, calf stretch 1×60 s/side</li>
+            <li>2 min nasal down-shift</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Friday - Day 4 Upper -->
+      <div class="day-card" id="friday-workout">
+        <div class="day-header">
+          <div class="day-title">FRIDAY - DAY 4 UPPER</div>
+          <div class="day-type">Speed + Volume</div>
+          <button class="print-btn" onclick="printDay('friday')">PRINT WORKOUT</button>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">PRE-WORKOUT PROTOCOL</div>
+          <ul>
+            <li style="color: var(--yellow); font-weight: bold;">Perform Daily Vault Work</li>
+            <li style="color: var(--yellow); font-weight: bold;"><a href="https://youtu.be/oT3TC0wZ9VY" target="_blank" class="exercise-link" style="color: var(--yellow);">Perform Upper Dynamic Warmup</a></li>
+          </ul>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">FIELD/POWER (8-10 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/sKgnfF3TZyU" target="_blank" class="exercise-link">Down the Wall Med Ball Punch</a></span>
+            <span class="exercise-details">2×10/10 L/R</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Ball (lb)" data-exercise="med-ball-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">WEIGHT ROOM (30-40 MIN)</div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/9g166ei4_GE" target="_blank" class="exercise-link">Incline Bench Speed (optional chains/bands)</a></span>
+            <span class="exercise-details">4×3</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="incline-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/IJzbszHWqDE" target="_blank" class="exercise-link">Pull-up/Chin-up</a></span>
+            <span class="exercise-details">4×4 (Max slow eccentric)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="BW/Assist" data-exercise="pullup-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/89DwvA5-a58" target="_blank" class="exercise-link">1 Arm Row (Knee on Bench)</a></span>
+            <span class="exercise-details">2×12</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="db-row-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/HTFwzwg_dq0" target="_blank" class="exercise-link">Banded Front Neck ISO Hold</a></span>
+            <span class="exercise-details">2×20 seconds</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band" data-exercise="neck-iso-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/uPfugVl8gGs" target="_blank" class="exercise-link">Half Kneeling Landmine Press</a></span>
+            <span class="exercise-details">2×10/10</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="landmine-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/EA0RUWDekBw" target="_blank" class="exercise-link">Powell Raise</a></span>
+            <span class="exercise-details">2×8/8</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="powell-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/mzosvTFHQd4" target="_blank" class="exercise-link">Dead Bugs</a></span>
+            <span class="exercise-details">2×8/8</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="BW" data-exercise="deadbugs-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/fXFN8_1Bh6k" target="_blank" class="exercise-link">Incline Dumbbell Curl</a></span>
+            <span class="exercise-details">2×8/8 (3s lower)</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Weight (lb)" data-exercise="curl-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+          <div class="exercise-item">
+            <span class="exercise-name"><a href="https://youtube.com/shorts/k1RyXZEmKNo" target="_blank" class="exercise-link">Pass Set Pallof Press</a></span>
+            <span class="exercise-details">2×10/10</span>
+            <div class="weight-input-wrapper">
+              <input type="text" class="weight-input" placeholder="Band/Cable" data-exercise="pallof-fri" data-week="1">
+              <span class="weight-saved">✓</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="exercise-section">
+          <div class="section-title">RECOVERY</div>
+          <ul>
+            <li>Sleeper 2×45 s/side, wall slides 2×10, scap retractions 2×15</li>
+            <li>Band ER 2×20, scap clocks 2×6 directions</li>
+            <li>2 min nasal breathing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nutrition Tab -->
+  <div class="tab-content" id="nutrition">
+    <div class="card">
+      <h2 class="card-title">NUTRITION PROTOCOLS</h2>
+      
+      <div class="info-box">
+        <h3>DAILY NUTRITIONAL TARGETS</h3>
+        <ul>
+          <li><strong>Protein:</strong> ~300 g/day across 5-6 meals</li>
+          <li><strong>Carbohydrates:</strong> 450-525 g (lift days), 300-350 g (recovery days)</li>
+          <li><strong>Hydration:</strong> ~5.5-6 L/day baseline</li>
+          <li><strong>Sodium:</strong> 4-7 g/day from salt + foods + Catalyte</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>SUPPLEMENT PROTOCOL (THORNE)</h3>
+        <ul>
+          <li><strong>Creatine:</strong> 10 g AM + 10 g PM</li>
+          <li><strong>D-5000:</strong> 1 cap with breakfast</li>
+          <li><strong>Super EPA:</strong> 2 caps lunch, 1 cap dinner</li>
+          <li><strong>Amino Complex:</strong> 1 scoop post-lift</li>
+          <li><strong>Beta Alanine-SR:</strong> 2 tabs AM, 2 tabs PM</li>
+          <li><strong>Catalyte:</strong> 1 scoop in 500-750 ml pre/during lifts</li>
+          <li><strong>Magnesium Bisglycinate:</strong> 1 scoop 30-60 min pre-bed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recovery Tab -->
+  <div class="tab-content" id="recovery">
+    <div class="card">
+      <h2 class="card-title">RECOVERY PROTOCOLS</h2>
+      
+      <div class="info-box">
+        <h3>DAILY VAULT WORK (BEFORE EVERY LIFT)</h3>
+        <ul>
+          <li><strong>Ankles:</strong> Banded dorsiflexion 2×60 s/side, tib raises 2×20</li>
+          <li><strong>Adductors:</strong> Frog rock-backs 2×12, long adductor lunge 2×45 s/side</li>
+          <li><strong>T-spine:</strong> Open-book 8/side</li>
+          <li><strong>Shoulder ER:</strong> Sleeper 2×45 s/side, band ER 2×15</li>
+        </ul>
+      </div>
+      
+      <div class="warning-box">
+        <h3>INJURY MANAGEMENT</h3>
+        <ul>
+          <li><strong>Right shoulder:</strong> Keep loads in pain-free arcs. Use neutral grips</li>
+          <li><strong>Left knee:</strong> If swells, elevate and add compression</li>
+          <li><strong>New pain:</strong> Remove trigger, hold isometric 30-45 s at pain-free angle</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>SLEEP & RECOVERY TARGETS</h3>
+        <ul>
+          <li><strong>Sleep target:</strong> 8.5+ hours</li>
+          <li><strong>If sleep ≤6 hours:</strong> Cut training volume 20%</li>
+          <li><strong>Room temperature:</strong> 65-68°F</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+// Tab navigation
+function showTab(tabName) {
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  
+  const selectedTab = document.getElementById(tabName);
+  if (selectedTab) selectedTab.classList.add('active');
+  
+  const buttons = document.querySelectorAll('.nav-btn');
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.textContent.toLowerCase().includes(tabName) || 
+        (tabName === 'overview' && btn.textContent === 'OVERVIEW') ||
+        (tabName === 'weekly' && btn.textContent === 'WEEKLY PROGRAM') ||
+        (tabName === 'nutrition' && btn.textContent === 'NUTRITION') ||
+        (tabName === 'recovery' && btn.textContent === 'RECOVERY')) {
+      btn.classList.add('active');
+    }
+  });
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Week selection
+let currentWeek = 1;
+
+function selectWeek(weekNum) {
+  currentWeek = weekNum;
+  const weekInfo = document.getElementById('week-info');
+  const weekDescriptions = {
+    1: { title: 'WEEK 1 - FOUNDATION', desc: 'Focus: Movement patterns, base building, technique refinement' },
+    2: { title: 'WEEK 2 - BUILD', desc: 'Focus: Progressive overload, volume increase, form mastery' },
+    3: { title: 'WEEK 3 - INTENSITY', desc: 'Focus: Power development, speed work, explosive movements (Add weight vest)' },
+    4: { title: 'WEEK 4 - STRENGTH', desc: 'Focus: Heavy loads, maintain volume, push intensity' },
+    5: { title: 'WEEK 5 - PEAK POWER', desc: 'Focus: Maximum explosiveness, competition prep movements' },
+    6: { title: 'WEEK 6 - DELOAD', desc: 'Focus: Active recovery, reduce volume by 40-50%, maintain movement patterns' }
+  };
+  
+  if (weekInfo && weekDescriptions[weekNum]) {
+    weekInfo.innerHTML = `
+      <h3>${weekDescriptions[weekNum].title}</h3>
+      <p>${weekDescriptions[weekNum].desc}</p>
+    `;
+  }
+  
+  const weekButtons = document.querySelectorAll('.week-select-btn');
+  weekButtons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Update weight inputs for the selected week
+  document.querySelectorAll('.weight-input').forEach(input => {
+    input.dataset.week = weekNum.toString();
+    loadWeight(input);
+  });
+}
+
+// Print functionality
+function printDay(day) {
+  const dayCard = document.getElementById(`${day}-workout`);
+  if (!dayCard) return;
+  
+  const printWindow = window.open('', '', 'height=800,width=1000');
+  const printContent = dayCard.cloneNode(true);
+  
+  // Remove input fields and buttons from print version
+  const inputs = printContent.querySelectorAll('input, button');
+  inputs.forEach(el => el.remove());
+  
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>${day.charAt(0).toUpperCase() + day.slice(1)} Workout</title>
+        <style>
+          body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px;
+            color: #000;
+          }
+          h1 { 
+            color: #F5C842;
+            border-bottom: 3px solid #F5C842;
+            padding-bottom: 10px;
+          }
+          .day-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+          }
+          .exercise-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #F5C842;
+            background: #f9f9f9;
+          }
+          .exercise-name {
+            font-weight: bold;
+          }
+          .exercise-details {
+            color: #666;
+            margin-left: 20px;
+          }
+          .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #F5C842;
+            margin: 20px 0 10px 0;
+          }
+          @media print {
+            body { margin: 0; }
+          }
+        </style>
+      </head>
+      <body>
+        <h1>CHRISTOPHER SALAS - ${day.toUpperCase()} WORKOUT</h1>
+        <p><strong>Week ${currentWeek}</strong> | <strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+        ${printContent.innerHTML}
+      </body>
+    </html>
+  `);
+  
+  printWindow.document.close();
+  printWindow.focus();
+  setTimeout(() => {
+    printWindow.print();
+    printWindow.close();
+  }, 250);
+}
+
+// Exercise Substitution Functions
+let currentExercise = '';
+let currentExerciseDetails = '';
+
+function openSubModal(exerciseName, exerciseDetails) {
+  currentExercise = exerciseName;
+  currentExerciseDetails = exerciseDetails || '';
+  
+  // Check if modal already exists
+  let modal = document.getElementById('subModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'subModal';
+    document.body.appendChild(modal);
+  }
+  
+  modal.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">EXERCISE SUBSTITUTION</div>
+        <button class="close-btn" onclick="closeSubModal()">&times;</button>
+      </div>
+      <div id="exerciseInfo">
+        <div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 5px;">
+          <p style="color: var(--yellow); font-weight: bold;">Original Exercise:</p>
+          <p style="color: var(--white);">${exerciseName} ${exerciseDetails ? '- ' + exerciseDetails : ''}</p>
+        </div>
+      </div>
+      <input type="text" class="sub-input" id="equipmentInput" placeholder="What equipment do you have available? (e.g., dumbbells, bands, bodyweight only)">
+      <button class="sub-button" id="getSubBtn" onclick="getSubstitution()">GET SUBSTITUTION</button>
+      <div id="subResult"></div>
+    </div>
+  `;
+  
+  modal.classList.add('active');
+}
+
+function closeSubModal() {
+  const modal = document.getElementById('subModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.getElementById('subResult').innerHTML = '';
+    document.getElementById('equipmentInput').value = '';
+  }
+}
+
+// Comprehensive exercise substitutions database
+const exerciseSubstitutions = {
+  // Lower Body - Power
+  'footwork sled push': {
+    'bodyweight': 'Bear Crawl Sprints (7 sec), Wall Sits with rapid foot taps, or High Knee Sprints in place',
+    'dumbbells': 'Farmer Walk with high knees, Dumbbell Walking Lunges with explosive drive',
+    'bands': 'Band-resisted marching, Band-resisted high knees, or Lateral band walks with speed',
+    'general': 'Hill sprints, Prowler push alternative with partner resistance'
+  },
+  'sled push': {
+    'bodyweight': 'Bear Crawl Sprints (7 sec), Wall Sits with rapid foot taps, or High Knee Sprints in place',
+    'dumbbells': 'Farmer Walk with high knees, Dumbbell Walking Lunges with explosive drive',
+    'bands': 'Band-resisted marching, Band-resisted high knees, or Lateral band walks with speed',
+    'general': 'Hill sprints, Prowler push alternative with partner resistance'
+  },
+  'box jump': {
+    'bodyweight': 'Jump Squats, Broad Jumps, Depth Jumps from small height, or Tuck Jumps',
+    'dumbbells': 'Dumbbell Jump Squats, Weighted Step-Ups with explosive drive',
+    'bands': 'Band-assisted jumps for height, Banded squat jumps',
+    'general': 'Stair jumps, Park bench step-ups with jump'
+  },
+  'single leg box jump': {
+    'bodyweight': 'Single Leg Bounds, Single Leg Broad Jumps, Skater Hops',
+    'dumbbells': 'Single Leg Box Step-ups with knee drive, Weighted single leg jumps',
+    'bands': 'Band-assisted single leg jumps, Band-resisted single leg bounds',
+    'general': 'Stair hops on one leg, Single leg depth jumps'
+  },
+  
+  // Lower Body - Strength
+  'box squat': {
+    'bodyweight': 'Pause Squats to bench/chair, Wall Sits (5 sec holds), Bulgarian Split Squats',
+    'dumbbells': 'Goblet Box Squats, Dumbbell Front Squats with pause, Goblet Squats to bench',
+    'bands': 'Banded Box Squats, Band-resisted squats with 5 sec eccentric',
+    'general': 'Any squat variation with controlled eccentric and pause at bottom'
+  },
+  'trap bar rfess': {
+    'bodyweight': 'Bulgarian Split Squats with 3 sec eccentric, Rear Foot Elevated Split Squats',
+    'dumbbells': 'DB Bulgarian Split Squats, DB Lunges with rear foot elevated',
+    'bands': 'Band-resisted split squats, Band-assisted pistol squats',
+    'general': 'Single leg squats to box, Assisted pistol squats'
+  },
+  'barbell step up': {
+    'bodyweight': 'High Box Step-ups, Deficit Reverse Lunges, Box Step-ups with knee drive',
+    'dumbbells': 'Dumbbell Step-ups, Weighted Lunges, DB Box Step-ups',
+    'bands': 'Band-resisted step-ups, Band-resisted lunges',
+    'general': 'Stairs or park bench step-ups, Hill walking lunges'
+  },
+  'step up': {
+    'bodyweight': 'High Box Step-ups, Deficit Reverse Lunges, Box Step-ups with knee drive',
+    'dumbbells': 'Dumbbell Step-ups, Weighted Lunges, DB Box Step-ups',
+    'bands': 'Band-resisted step-ups, Band-resisted lunges',
+    'general': 'Stairs or park bench step-ups, Hill walking lunges'
+  },
+  'goblet squat': {
+    'bodyweight': 'Deep Bodyweight Squats, Jump Squats, Prisoner Squats',
+    'dumbbells': 'Dumbbell Front Squats, Dumbbell Goblet Squats',
+    'bands': 'Band Goblet Squats, Band Front Squats',
+    'general': 'Front Squats with any weight, Zercher Squats'
+  },
+  'single leg rdl': {
+    'bodyweight': 'Single Leg RDL (bodyweight), Single Leg Good Mornings',
+    'dumbbells': 'DB Single Leg RDL, DB Single Leg Deadlift',
+    'bands': 'Band Single Leg RDL, Band Good Mornings',
+    'general': 'Any single leg hip hinge movement'
+  },
+  'curtsy lunge': {
+    'bodyweight': 'Bodyweight Curtsy Lunges, Lateral Lunges, Cossack Squats',
+    'dumbbells': 'DB Curtsy Lunges, DB Lateral Lunges',
+    'bands': 'Band-resisted Curtsy Lunges, Lateral Band Walks',
+    'general': 'Any lateral/diagonal lunge variation'
+  },
+  'glute bridge': {
+    'bodyweight': 'Single Leg Glute Bridges, Hip Thrusts, Marching Glute Bridges',
+    'dumbbells': 'DB Glute Bridges, Weighted Hip Thrusts',
+    'bands': 'Band Glute Bridges, Band Hip Thrusts',
+    'general': 'Any hip extension exercise'
+  },
+  'cross over step up': {
+    'bodyweight': 'Lateral Step-ups, Curtsy Step-ups, Crossover Lunges',
+    'dumbbells': 'DB Crossover Step-ups, Weighted Lateral Step-ups',
+    'bands': 'Band-resisted Lateral Steps',
+    'general': 'Any lateral stepping movement'
+  },
+  
+  // Pass Protection Drills
+  'banded pass set power step': {
+    'bodyweight': 'Shadow pass sets with focus on footwork, Wall sits with arm punches',
+    'dumbbells': 'DB held at chest during pass set footwork, Weighted stance work',
+    'bands': 'Band around waist for partner-resisted sets, Band punch-outs in stance',
+    'general': 'Partner hand fighting drills, Mirror drill with partner'
+  },
+  'power step': {
+    'bodyweight': 'Shadow pass sets with focus on footwork, Wall sits with arm punches',
+    'dumbbells': 'DB held at chest during pass set footwork, Weighted stance work',
+    'bands': 'Band around waist for partner-resisted sets, Band punch-outs in stance',
+    'general': 'Partner hand fighting drills, Mirror drill with partner'
+  },
+  'banded pass set kick step': {
+    'bodyweight': 'Lateral lunges with reach, Cossack squats, Lateral bounds',
+    'dumbbells': 'DB lateral lunges, Weighted lateral steps',
+    'bands': 'Lateral band walks in pass set stance, Band-resisted lateral slides',
+    'general': 'Slide board lateral movements, Partner-resisted lateral steps'
+  },
+  'kick step': {
+    'bodyweight': 'Lateral lunges with reach, Cossack squats, Lateral bounds',
+    'dumbbells': 'DB lateral lunges, Weighted lateral steps',
+    'bands': 'Lateral band walks in pass set stance, Band-resisted lateral slides',
+    'general': 'Slide board lateral movements, Partner-resisted lateral steps'
+  },
+  'banded lateral neck': {
+    'bodyweight': 'Lateral shuffle to vertical jump, Lateral bounds, Speed skaters',
+    'dumbbells': 'DB lateral lunges to press, Weighted lateral jumps',
+    'bands': 'Lateral band walks with speed, Band-resisted shuffles',
+    'general': 'Cone drills with lateral movement, Agility ladder lateral work'
+  },
+  'kick to power': {
+    'bodyweight': 'Lateral shuffle to vertical jump, Lateral bounds, Speed skaters',
+    'dumbbells': 'DB lateral lunges to press, Weighted lateral jumps',
+    'bands': 'Lateral band walks with speed, Band-resisted shuffles',
+    'general': 'Cone drills with lateral movement, Agility ladder lateral work'
+  },
+  'power to kick': {
+    'bodyweight': 'Lateral shuffle to vertical jump, Lateral bounds, Speed skaters',
+    'dumbbells': 'DB lateral lunges to press, Weighted lateral jumps',
+    'bands': 'Lateral band walks with speed, Band-resisted shuffles',
+    'general': 'Cone drills with lateral movement, Agility ladder lateral work'
+  },
+  
+  // Upper Body - Push
+  'barbell bench press': {
+    'bodyweight': 'Push-ups (regular, wide, diamond), Decline push-ups, Explosive push-ups',
+    'dumbbells': 'Dumbbell Bench Press, DB Floor Press, DB Flyes',
+    'bands': 'Band Chest Press, Band Push-ups, Band Flyes',
+    'general': 'Any horizontal pressing movement'
+  },
+  'bench press': {
+    'bodyweight': 'Push-ups (regular, wide, diamond), Decline push-ups, Explosive push-ups',
+    'dumbbells': 'Dumbbell Bench Press, DB Floor Press, DB Flyes',
+    'bands': 'Band Chest Press, Band Push-ups, Band Flyes',
+    'general': 'Any horizontal pressing movement'
+  },
+  'incline bench': {
+    'bodyweight': 'Pike Push-ups, Decline Push-ups, Handstand Push-ups (assisted)',
+    'dumbbells': 'Incline DB Press, Arnold Press, DB Shoulder Press',
+    'bands': 'Band Incline Press, Band Shoulder Press',
+    'general': 'Any incline or shoulder pressing movement'
+  },
+  'landmine press': {
+    'bodyweight': 'Single Arm Push-ups, Archer Push-ups, T-Push-ups',
+    'dumbbells': 'Single Arm DB Press, DB Clean and Press',
+    'bands': 'Single Arm Band Press, Band Punches',
+    'general': 'Any unilateral pressing movement'
+  },
+  
+  // Upper Body - Pull
+  'pull-up': {
+    'bodyweight': 'Inverted Rows (under table/bar), Door Frame Rows, Dead Hangs',
+    'dumbbells': 'Bent Over DB Rows, DB Pullovers, Renegade Rows',
+    'bands': 'Band Lat Pulldowns, Band-assisted Pull-ups, Band Rows',
+    'general': 'Any vertical pulling movement'
+  },
+  'chin-up': {
+    'bodyweight': 'Supinated Inverted Rows, Close-grip inverted rows',
+    'dumbbells': 'DB Rows with supinated grip, DB Curls to Rows',
+    'bands': 'Band-assisted Chin-ups, Band Curls to Rows',
+    'general': 'Any supinated pulling movement'
+  },
+  'trx row': {
+    'bodyweight': 'Inverted Row under table, Door frame rows, Superman pulls',
+    'dumbbells': 'Bent Over DB Rows, Chest-Supported DB Rows',
+    'bands': 'Band Rows, Band Face Pulls',
+    'general': 'Any horizontal pulling movement'
+  },
+  '1 arm row': {
+    'bodyweight': 'Single Arm Inverted Rows, Archer Rows',
+    'dumbbells': 'Single DB Row, Kroc Rows, Meadows Rows',
+    'bands': 'Single Arm Band Rows, Band Saws',
+    'general': 'Any unilateral rowing movement'
+  },
+  
+  // Accessory Work
+  'hip airplane': {
+    'bodyweight': 'Single Leg RDL (bodyweight), Bird Dogs, Single Leg Glute Bridges',
+    'dumbbells': 'DB Single Leg RDL, DB Single Leg Deadlift',
+    'bands': 'Band Single Leg RDL, Band Hip Abduction',
+    'general': 'Any single leg hip stability exercise'
+  },
+  'tib bar raise': {
+    'bodyweight': 'Wall Tibialis Raises, Heel Walks, Toe Raises against wall',
+    'dumbbells': 'DB held for resistance during tibialis raises',
+    'bands': 'Band around foot for tibialis raises, Band dorsiflexion',
+    'general': 'Any tibialis/shin strengthening exercise'
+  },
+  'tib raise': {
+    'bodyweight': 'Wall Tibialis Raises, Heel Walks, Toe Raises against wall',
+    'dumbbells': 'DB held for resistance during tibialis raises',
+    'bands': 'Band around foot for tibialis raises, Band dorsiflexion',
+    'general': 'Any tibialis/shin strengthening exercise'
+  },
+  'banded seated calf': {
+    'bodyweight': 'Single Leg Calf Raises, Jump Rope, Pogo Jumps',
+    'dumbbells': 'DB Calf Raises, Weighted calf raises',
+    'bands': 'Standing Band Calf Raises',
+    'general': 'Any calf strengthening exercise'
+  },
+  'calf raise': {
+    'bodyweight': 'Single Leg Calf Raises, Jump Rope, Pogo Jumps',
+    'dumbbells': 'DB Calf Raises, Weighted calf raises',
+    'bands': 'Standing Band Calf Raises',
+    'general': 'Any calf strengthening exercise'
+  },
+  'dead bugs': {
+    'bodyweight': 'Dead Bugs (standard), Bird Dogs, Hollow Body Holds',
+    'dumbbells': 'Weighted Dead Bugs (light DB)',
+    'bands': 'Band Dead Bugs, Band Pallof Press',
+    'general': 'Any anti-extension core exercise'
+  },
+  'dead bug': {
+    'bodyweight': 'Dead Bugs (standard), Bird Dogs, Hollow Body Holds',
+    'dumbbells': 'Weighted Dead Bugs (light DB)',
+    'bands': 'Band Dead Bugs, Band Pallof Press',
+    'general': 'Any anti-extension core exercise'
+  },
+  'pallof press': {
+    'bodyweight': 'Side Planks, Bear Crawl Holds, Bird Dogs',
+    'dumbbells': 'DB Wood Chops, Suitcase Carries',
+    'bands': 'Band Pallof Press, Band Wood Chops',
+    'general': 'Any anti-rotation core exercise'
+  },
+  'band pull apart': {
+    'bodyweight': 'Wall Slides, Prone Y-T-W Raises, Reverse Snow Angels',
+    'dumbbells': 'DB Reverse Flyes, DB High Pulls',
+    'bands': 'Band Pull Aparts, Band Face Pulls',
+    'general': 'Any rear delt/upper back exercise'
+  },
+  'face pull': {
+    'bodyweight': 'Wall Slides, Prone Y-T-W Raises',
+    'dumbbells': 'DB High Pulls, DB Reverse Flyes',
+    'bands': 'Band Face Pulls, Band Pull Aparts',
+    'general': 'Any rear delt/upper back exercise'
+  },
+  'tricep': {
+    'bodyweight': 'Diamond Push-ups, Dips (chair/bench), Close-grip Push-ups',
+    'dumbbells': 'DB Tricep Extensions, DB Kickbacks',
+    'bands': 'Band Tricep Pushdowns, Band Overhead Extensions',
+    'general': 'Any tricep isolation exercise'
+  },
+  'curl': {
+    'bodyweight': 'Chin-ups, Inverted Curls',
+    'dumbbells': 'DB Curls, Hammer Curls, Concentration Curls',
+    'bands': 'Band Curls, Band Hammer Curls',
+    'general': 'Any bicep isolation exercise'
+  },
+  'powell raise': {
+    'bodyweight': 'Wall Slides, Prone Y Raises',
+    'dumbbells': 'Light DB Y Raises, DB Lateral Raises',
+    'bands': 'Band Y Raises, Band Lateral Raises',
+    'general': 'Any rear delt/rotator cuff exercise'
+  },
+  'shrug': {
+    'bodyweight': 'Wall Handstand Shrugs, Inverted Shrugs',
+    'dumbbells': 'DB Shrugs, DB Farmer Walks',
+    'bands': 'Band Shrugs, Band High Pulls',
+    'general': 'Any trap strengthening exercise'
+  },
+  
+  // Neck Work
+  'neck bridge': {
+    'bodyweight': 'Isometric neck holds (hand resistance), Wall neck leans',
+    'dumbbells': 'Light DB neck flexion/extension (careful)',
+    'bands': 'Band neck exercises (all directions)',
+    'general': 'Partner-resisted neck work, Manual resistance'
+  },
+  'neck iso': {
+    'bodyweight': 'Isometric neck holds with hand resistance',
+    'dumbbells': 'Lying neck flexion with light weight',
+    'bands': 'Band neck flexion, Band neck holds',
+    'general': 'Any neck strengthening exercise'
+  },
+  
+  // Med Ball
+  'med ball punch': {
+    'bodyweight': 'Shadow Boxing, Explosive Push-ups, Plyo Push-ups',
+    'dumbbells': 'DB Punches, DB Press Throws',
+    'bands': 'Band Punches, Band Chest Press (explosive)',
+    'general': 'Any explosive upper body movement'
+  }
+};
+
+function getSubstitution() {
+  const equipment = document.getElementById('equipmentInput').value.trim().toLowerCase();
+  const resultDiv = document.getElementById('subResult');
+  const btn = document.getElementById('getSubBtn');
+  
+  if (!equipment) {
+    resultDiv.innerHTML = '<p style="color: var(--red);">Please specify what equipment you have available.</p>';
+    return;
+  }
+  
+  btn.disabled = true;
+  btn.textContent = 'FINDING ALTERNATIVES...';
+  
+  // Clean up exercise name for matching
+  const exerciseLower = currentExercise.toLowerCase().replace(/[^\w\s]/g, '');
+  
+  // Try to find a match
+  let foundSub = null;
+  let bestMatch = null;
+  
+  // First try exact match
+  for (const [key, subs] of Object.entries(exerciseSubstitutions)) {
+    if (exerciseLower.includes(key) || key.includes(exerciseLower.split(' ')[0])) {
+      bestMatch = key;
+      
+      // Check for equipment match
+      if (equipment.includes('bodyweight') || equipment.includes('body weight') || equipment.includes('none')) {
+        foundSub = subs.bodyweight;
+      } else if (equipment.includes('dumbbell') || equipment.includes('db')) {
+        foundSub = subs.dumbbells;
+      } else if (equipment.includes('band') || equipment.includes('resistance')) {
+        foundSub = subs.bands;
+      } else {
+        foundSub = subs.general || subs.bodyweight;
+      }
+      break;
+    }
+  }
+  
+  // Display results
+  if (foundSub) {
+    resultDiv.innerHTML = `
+      <div class="substitution-result">
+        <h4>Recommended Substitutions:</h4>
+        <p style="color: var(--yellow); margin-bottom: 10px;">For ${currentExercise} with ${equipment}:</p>
+        <p>${foundSub}</p>
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border);">
+          <p style="font-size: 0.9em; color: var(--gray);">Tips:</p>
+          <ul style="font-size: 0.9em; margin-top: 5px;">
+            <li>Match the original tempo and rep scheme</li>
+            <li>Focus on the same movement pattern</li>
+            <li>Adjust load/difficulty to match RPE</li>
+          </ul>
+        </div>
+      </div>
+    `;
+  } else {
+    // Provide general guidelines based on movement pattern
+    const movementPattern = detectMovementPattern(exerciseLower);
+    resultDiv.innerHTML = `
+      <div class="substitution-result">
+        <h4>General Substitution Guidelines:</h4>
+        <p style="color: var(--yellow); margin-bottom: 10px;">For ${currentExercise}:</p>
+        ${getGeneralGuidelines(movementPattern, equipment)}
+        <div style="margin-top: 15px; padding: 10px; background: rgba(255,87,34,0.1); border: 1px solid var(--red); border-radius: 5px;">
+          <p style="font-size: 0.9em;">Can't find a perfect match? Contact your coach for personalized alternatives.</p>
+        </div>
+      </div>
+    `;
+  }
+  
+  btn.disabled = false;
+  btn.textContent = 'GET SUBSTITUTION';
+}
+
+function detectMovementPattern(exercise) {
+  const patterns = {
+    squat: ['squat', 'goblet', 'box squat', 'lunge', 'split'],
+    hinge: ['deadlift', 'rdl', 'swing', 'hip', 'good morning'],
+    push: ['press', 'bench', 'push', 'tricep', 'dip'],
+    pull: ['row', 'pull', 'chin', 'lat', 'curl'],
+    carry: ['carry', 'walk', 'hold', 'farmer'],
+    jump: ['jump', 'bound', 'hop', 'plyo', 'box'],
+    core: ['plank', 'dead bug', 'pallof', 'ab', 'core']
+  };
+  
+  for (const [pattern, keywords] of Object.entries(patterns)) {
+    if (keywords.some(keyword => exercise.includes(keyword))) {
+      return pattern;
+    }
+  }
+  return 'general';
+}
+
+function getGeneralGuidelines(pattern, equipment) {
+  const guidelines = {
+    squat: `
+      <p>Squat pattern alternatives with ${equipment}:</p>
+      <ul>
+        <li>Focus on knee-dominant movements</li>
+        <li>Maintain upright torso position</li>
+        <li>Options: Air squats, lunges, step-ups, wall sits</li>
+        <li>Add tempo work to increase difficulty without load</li>
+      </ul>
+    `,
+    hinge: `
+      <p>Hinge pattern alternatives with ${equipment}:</p>
+      <ul>
+        <li>Focus on hip-dominant movements</li>
+        <li>Emphasize glutes and hamstrings</li>
+        <li>Options: Good mornings, single-leg RDLs, bridges</li>
+        <li>Use slow eccentrics to increase challenge</li>
+      </ul>
+    `,
+    push: `
+      <p>Push pattern alternatives with ${equipment}:</p>
+      <ul>
+        <li>Horizontal: Push-up variations</li>
+        <li>Vertical: Pike push-ups, handstand progressions</li>
+        <li>Add pauses or tempo to increase difficulty</li>
+      </ul>
+    `,
+    pull: `
+      <p>Pull pattern alternatives with ${equipment}:</p>
+      <ul>
+        <li>Horizontal: Inverted rows under sturdy table</li>
+        <li>Vertical: Door frame pulls, towel rows</li>
+        <li>Focus on squeezing shoulder blades together</li>
+      </ul>
+    `,
+    jump: `
+      <p>Plyometric alternatives with ${equipment}:</p>
+      <ul>
+        <li>Jumps: Squat jumps, split jumps, bounds</li>
+        <li>Low impact: Fast step-ups, quick feet drills</li>
+        <li>Focus on explosive intent even with less load</li>
+      </ul>
+    `,
+    core: `
+      <p>Core alternatives with ${equipment}:</p>
+      <ul>
+        <li>Anti-extension: Planks, hollow holds</li>
+        <li>Anti-rotation: Side planks, bird dogs</li>
+        <li>Anti-flexion: Superman, back extensions</li>
+      </ul>
+    `,
+    general: `
+      <p>General substitution principles:</p>
+      <ul>
+        <li>Match the movement pattern as closely as possible</li>
+        <li>Target the same muscle groups</li>
+        <li>Adjust tempo, pauses, or volume to match intensity</li>
+        <li>When in doubt, ask your coach for guidance</li>
+      </ul>
+    `
+  };
+  
+  return guidelines[pattern] || guidelines.general;
+}
+
+// Export data
+function exportData() {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.includes('-week')) {
+      data[key] = localStorage.getItem(key);
+    }
+  }
+  
+  const dataStr = JSON.stringify(data, null, 2);
+  const dataBlob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(dataBlob);
+  
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `training-data-${new Date().toISOString().split('T')[0]}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+  
+  alert('Data exported successfully!');
+}
+
+// Weight tracking
+function loadWeight(input) {
+  const key = `${input.dataset.exercise}-week${input.dataset.week}`;
+  const saved = localStorage.getItem(key);
+  if (saved) input.value = saved;
+}
+
+function saveWeight(input) {
+  const key = `${input.dataset.exercise}-week${input.dataset.week}`;
+  localStorage.setItem(key, input.value);
+  
+  const savedIndicator = input.nextElementSibling;
+  if (savedIndicator) {
+    savedIndicator.classList.add('show');
+    setTimeout(() => savedIndicator.classList.remove('show'), 2000);
+  }
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize weight tracking
+  document.querySelectorAll('.weight-input').forEach(input => {
+    const week = input.dataset.week || '1';
+    const key = `${input.dataset.exercise}-week${week}`;
+    const saved = localStorage.getItem(key);
+    
+    if (saved) {
+      input.value = saved;
+    }
+    
+    input.addEventListener('change', function() {
+      saveWeight(this);
+    });
+  });
+  
+  // Add substitution buttons to exercises
+  addSubstitutionButtons();
+});
+
+// Add substitution buttons function
+function addSubstitutionButtons() {
+  document.querySelectorAll('.exercise-item').forEach(item => {
+    const nameElement = item.querySelector('.exercise-name');
+    const detailsElement = item.querySelector('.exercise-details');
+    
+    if (nameElement && !item.querySelector('.sub-link')) {
+      const linkElement = nameElement.querySelector('a');
+      const exerciseName = linkElement ? linkElement.textContent : nameElement.textContent;
+      const exerciseDetails = detailsElement ? detailsElement.textContent : '';
+      
+      const subBtn = document.createElement('button');
+      subBtn.className = 'sub-link';
+      subBtn.textContent = 'SUB';
+      subBtn.title = 'Get exercise substitution';
+      subBtn.onclick = function(e) {
+        e.stopPropagation();
+        openSubModal(exerciseName, exerciseDetails);
+      };
+      
+      nameElement.appendChild(subBtn);
+    }
+  });
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('subModal');
+  if (event.target == modal) {
+    closeSubModal();
+  }
+}
+</script>
+
+</body>
+</html>
