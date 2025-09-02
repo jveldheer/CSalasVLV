@@ -425,6 +425,14 @@
     letter-spacing: 1px;
   }
   
+  .info-box h4 {
+    color: var(--yellow);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
   .warning-box {
     background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(255, 87, 34, 0.05) 100%);
     border: 1px solid var(--red);
@@ -460,6 +468,18 @@
     font-weight: bold;
   }
   
+  ol {
+    padding-left: 25px;
+  }
+  
+  ol li {
+    padding-left: 10px;
+  }
+  
+  ol li::before {
+    content: none;
+  }
+  
   .data-btn {
     background: var(--green);
     color: var(--white);
@@ -479,134 +499,6 @@
   .data-btn:hover {
     background: #5CBF60;
     transform: scale(1.05);
-  }
-  
-  /* Modal Styles */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-  }
-  
-  .modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background: var(--dark-gray);
-    border: 2px solid var(--yellow);
-    border-radius: 15px;
-    padding: 30px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid var(--border);
-  }
-  
-  .modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8em;
-    color: var(--yellow);
-    letter-spacing: 1px;
-  }
-  
-  .close-btn {
-    background: none;
-    border: none;
-    color: var(--yellow);
-    font-size: 2em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    line-height: 0.5;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-  }
-  
-  .close-btn:hover {
-    transform: scale(1.2);
-    text-shadow: 0 0 10px var(--glow);
-  }
-  
-  .sub-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    background: var(--black);
-    border: 1px solid var(--yellow);
-    color: var(--white);
-    border-radius: 5px;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .sub-button {
-    background: var(--yellow);
-    color: var(--black);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1em;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  .sub-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--glow);
-  }
-  
-  .substitution-result {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(245, 200, 66, 0.1);
-    border: 1px solid var(--yellow);
-    border-radius: 8px;
-    color: var(--white);
-    line-height: 1.6;
-  }
-  
-  .substitution-result h4 {
-    color: var(--yellow);
-    font-family: 'Bebas Neue', sans-serif;
-    margin-bottom: 10px;
-  }
-  
-  .sub-link {
-    background: var(--blue);
-    color: var(--white);
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    transition: all 0.3s ease;
-    margin-left: 10px;
-  }
-  
-  .sub-link:hover {
-    background: var(--yellow);
-    color: var(--black);
   }
   
   @media (max-width: 768px) {
@@ -658,10 +550,10 @@
 
 <nav>
   <div class="nav-wrapper">
-    <button class="nav-btn active" onclick="showTab('overview')">OVERVIEW</button>
-    <button class="nav-btn" onclick="showTab('weekly')">WEEKLY PROGRAM</button>
-    <button class="nav-btn" onclick="showTab('nutrition')">NUTRITION</button>
-    <button class="nav-btn" onclick="showTab('recovery')">RECOVERY</button>
+    <button class="nav-btn active" data-tab="overview">OVERVIEW</button>
+    <button class="nav-btn" data-tab="weekly">WEEKLY PROGRAM</button>
+    <button class="nav-btn" data-tab="nutrition">NUTRITION</button>
+    <button class="nav-btn" data-tab="recovery">RECOVERY</button>
   </div>
 </nav>
 
@@ -709,7 +601,7 @@
         </ul>
       </div>
       
-      <button class="data-btn" onclick="exportData()">
+      <button class="data-btn" id="export-btn">
         <span>📥</span> EXPORT DATA
       </button>
     </div>
@@ -723,13 +615,13 @@
       <!-- Week Selector -->
       <div style="text-align: center; margin: 20px 0;">
         <p style="color: var(--gray); margin-bottom: 15px;">SELECT YOUR CURRENT TRAINING WEEK:</p>
-        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-          <button class="week-select-btn active" onclick="selectWeek(1)">WEEK 1</button>
-          <button class="week-select-btn" onclick="selectWeek(2)">WEEK 2</button>
-          <button class="week-select-btn" onclick="selectWeek(3)">WEEK 3</button>
-          <button class="week-select-btn" onclick="selectWeek(4)">WEEK 4</button>
-          <button class="week-select-btn" onclick="selectWeek(5)">WEEK 5</button>
-          <button class="week-select-btn" onclick="selectWeek(6)">WEEK 6</button>
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;" id="week-buttons">
+          <button class="week-select-btn active" data-week="1">WEEK 1</button>
+          <button class="week-select-btn" data-week="2">WEEK 2</button>
+          <button class="week-select-btn" data-week="3">WEEK 3</button>
+          <button class="week-select-btn" data-week="4">WEEK 4</button>
+          <button class="week-select-btn" data-week="5">WEEK 5</button>
+          <button class="week-select-btn" data-week="6">WEEK 6</button>
         </div>
       </div>
       
@@ -743,7 +635,7 @@
         <div class="day-header">
           <div class="day-title">MONDAY - DAY 1 LOWER</div>
           <div class="day-type">Heavy Neural + Power</div>
-          <button class="print-btn" onclick="printDay('monday')">PRINT WORKOUT</button>
+          <button class="print-btn" data-day="monday">PRINT WORKOUT</button>
         </div>
         
         <div class="exercise-section">
@@ -840,7 +732,7 @@
         <div class="day-header">
           <div class="day-title">TUESDAY - DAY 2 UPPER</div>
           <div class="day-type">Speed + Armor</div>
-          <button class="print-btn" onclick="printDay('tuesday')">PRINT WORKOUT</button>
+          <button class="print-btn" data-day="tuesday">PRINT WORKOUT</button>
         </div>
         
         <div class="exercise-section">
@@ -937,7 +829,7 @@
         <div class="day-header">
           <div class="day-title">THURSDAY - DAY 3 LOWER</div>
           <div class="day-type">Single Leg + Stability</div>
-          <button class="print-btn" onclick="printDay('thursday')">PRINT WORKOUT</button>
+          <button class="print-btn" data-day="thursday">PRINT WORKOUT</button>
         </div>
         
         <div class="exercise-section">
@@ -1050,7 +942,7 @@
         <div class="day-header">
           <div class="day-title">FRIDAY - DAY 4 UPPER</div>
           <div class="day-type">Speed + Volume</div>
-          <button class="print-btn" onclick="printDay('friday')">PRINT WORKOUT</button>
+          <button class="print-btn" data-day="friday">PRINT WORKOUT</button>
         </div>
         
         <div class="exercise-section">
@@ -1170,9 +1062,15 @@
         <h3>DAILY NUTRITIONAL TARGETS</h3>
         <ul>
           <li><strong>Protein:</strong> ~300 g/day across 5-6 meals</li>
-          <li><strong>Carbohydrates:</strong> 450-525 g (lift days), 300-350 g (recovery days)</li>
-          <li><strong>Hydration:</strong> ~5.5-6 L/day baseline</li>
-          <li><strong>Sodium:</strong> 4-7 g/day from salt + foods + Catalyte</li>
+          <li><strong>Carbohydrates by Day:</strong>
+            <ul style="margin-top: 5px; margin-left: 20px;">
+              <li>Lift days (Mon/Tue/Thu/Fri): 450-525 g</li>
+              <li>Recovery days (Wed/Sat): 300-350 g</li>
+              <li>Full recovery (Sun): 250-300 g</li>
+            </ul>
+          </li>
+          <li><strong>Hydration:</strong> ~5.5-6 L/day baseline + 150% sweat back after lifts or sauna</li>
+          <li><strong>Sodium:</strong> 4-7 g/day from salt + foods + Catalyte (hot day or sauna: +1 g)</li>
         </ul>
       </div>
       
@@ -1182,10 +1080,71 @@
           <li><strong>Creatine:</strong> 10 g AM + 10 g PM</li>
           <li><strong>D-5000:</strong> 1 cap with breakfast</li>
           <li><strong>Super EPA:</strong> 2 caps lunch, 1 cap dinner</li>
-          <li><strong>Amino Complex:</strong> 1 scoop post-lift</li>
+          <li><strong>Amino Complex:</strong> 1 scoop post-lift (or sip during long sessions)</li>
           <li><strong>Beta Alanine-SR:</strong> 2 tabs AM, 2 tabs PM</li>
-          <li><strong>Catalyte:</strong> 1 scoop in 500-750 ml pre/during lifts</li>
+          <li><strong>Catalyte:</strong> 1 scoop in 500-750 ml pre/during lifts (sweaty or sauna day = 2 scoops split)</li>
+          <li><strong>Curcumin:</strong> 4 caps/day with meals if knee/shoulder feel hot</li>
           <li><strong>Magnesium Bisglycinate:</strong> 1 scoop 30-60 min pre-bed</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>PERI-LIFT NUTRITION TIMING</h3>
+        <ul>
+          <li><strong>90-120 min pre:</strong> Normal meal with carbs + protein</li>
+          <li><strong>30-45 min pre:</strong> Catalyte in 500-750 ml</li>
+          <li><strong>During:</strong> Sip water</li>
+          <li><strong>0-30 min post:</strong> Amino Complex + whey 40 g + fruit</li>
+          <li><strong>60-90 min post:</strong> Full meal</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>SAMPLE DAILY MEAL PLANS</h3>
+        
+        <h4>LIFT DAYS (Mon/Tue/Thu/Fri) - 450-525g Carbs</h4>
+        <ul>
+          <li><strong>Breakfast:</strong> 2 eggs + 300g egg whites, 100g oats cooked in milk + honey + berries, 1 banana, Creatine 10g, D-5000, 500ml water</li>
+          <li><strong>Lunch:</strong> Chicken 260-300g + jasmine rice 360-420g cooked + vegetables + Super EPA 2 caps</li>
+          <li><strong>Snack:</strong> Greek yogurt 400g + granola 60g + honey</li>
+          <li><strong>Dinner:</strong> Steak or salmon 260-300g + potatoes 450-500g cooked + salad + Super EPA 1 cap</li>
+          <li><strong>Pre-bed:</strong> Cottage cheese 300g or casein 30g + Creatine 10g + Magnesium</li>
+        </ul>
+        
+        <h4>RECOVERY DAYS (Wed/Sat) - 300-350g Carbs</h4>
+        <ul>
+          <li><strong>Breakfast:</strong> Omelet with 3 eggs + 250g egg whites + vegetables, 1 fruit, Creatine 10g, D-5000</li>
+          <li><strong>Snack:</strong> Whey 30g + milk 300ml, 2 rice cakes + jam</li>
+          <li><strong>Lunch:</strong> Tuna or chicken 260-300g + quinoa 250g cooked + vegetables + Super EPA 2 caps</li>
+          <li><strong>Dinner:</strong> Salmon 260g + potatoes 350-400g + salad + Super EPA 1 cap</li>
+          <li><strong>Pre-bed:</strong> Cottage cheese 300g or casein 30g + Creatine 10g + Magnesium</li>
+        </ul>
+        
+        <h4>SUNDAY (Full Recovery) - 250-300g Carbs</h4>
+        <ul>
+          <li><strong>Breakfast:</strong> Omelet with 3 eggs + vegetables + 30g cheese, 1 fruit, Creatine 10g, D-5000</li>
+          <li><strong>Snack:</strong> Greek yogurt 350g + nuts 20-30g</li>
+          <li><strong>Lunch:</strong> Chicken thigh 260-300g + potatoes 350-400g or rice 280-320g cooked + vegetables + Super EPA 2 caps</li>
+          <li><strong>Snack:</strong> Whey 30g in milk 300ml</li>
+          <li><strong>Dinner:</strong> White fish or turkey 260-300g + big salad + quinoa 200-250g cooked + Super EPA 1 cap</li>
+          <li><strong>Pre-bed:</strong> Cottage cheese 300g + Creatine 10g + Magnesium</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>HYDRATION & SODIUM STRATEGY</h3>
+        <ul>
+          <li>Fill 3×2L bottles each morning and finish them throughout the day</li>
+          <li>Add ~1-1.5g salt to the first 2L, get the rest from food</li>
+          <li>If scale is down >1kg next morning and you feel flat, add +500ml water and +1g sodium today</li>
+        </ul>
+      </div>
+      
+      <div class="warning-box">
+        <h3>AUTO-ADJUST RULES</h3>
+        <ul>
+          <li><strong>Sleep <8.5 hr last night or stress level 5:</strong> Cut gym volume 20%, remove jumps, add a nap</li>
+          <li><strong>Weight drift:</strong> If 2 weeks pass with no gain toward 305 lb, add +50g carbs on Thursday and Sunday</li>
         </ul>
       </div>
     </div>
@@ -1197,21 +1156,83 @@
       <h2 class="card-title">RECOVERY PROTOCOLS</h2>
       
       <div class="info-box">
-        <h3>DAILY VAULT WORK (BEFORE EVERY LIFT)</h3>
+        <h3>DAILY VAULT WORK (BEFORE EVERY LIFT) - 10-12 MIN</h3>
         <ul>
           <li><strong>Ankles:</strong> Banded dorsiflexion 2×60 s/side, tib raises 2×20</li>
           <li><strong>Adductors:</strong> Frog rock-backs 2×12, long adductor lunge 2×45 s/side</li>
           <li><strong>T-spine:</strong> Open-book 8/side</li>
-          <li><strong>Shoulder ER:</strong> Sleeper 2×45 s/side, band ER 2×15</li>
+          <li><strong>Shoulder ER (pain-free):</strong> Sleeper 2×45 s/side, band ER 2×15</li>
+        </ul>
+        <p style="margin-top: 15px; color: var(--yellow);"><strong>Pre-lift routine:</strong> Breathwork 4 min → Daily Vault 10-12 min → Micro-Vault 6 min</p>
+      </div>
+      
+      <div class="info-box">
+        <h3>POST-LIFT RECOVERY (12-15 MIN)</h3>
+        
+        <h4>Lower Body Days (Monday/Thursday)</h4>
+        <ul>
+          <li>Couch stretch 60 s/side</li>
+          <li>Adductor long lunge 45 s/side</li>
+          <li>Calf stretch 60 s/side</li>
+          <li>Deep squat pry 60 s (if knee comfortable)</li>
+          <li>Dead bug 2×8/side</li>
+          <li>2 min slow nasal breathing</li>
+        </ul>
+        
+        <h4>Upper Body Days (Tuesday/Friday)</h4>
+        <ul>
+          <li>Sleeper 2×45 s/side</li>
+          <li>Wall slides 2×10</li>
+          <li>Scap retractions 2×15</li>
+          <li>Pec minor smash 60 s</li>
+          <li>T-spine prayer 60 s</li>
+          <li>Open-book 8/side</li>
+          <li>Band ER 2×20</li>
+          <li>Scap clocks 2×6 directions</li>
+          <li>2 min nasal breathing</li>
+        </ul>
+        
+        <p style="margin-top: 15px; color: var(--yellow);"><strong>OL Drills:</strong> 15 min after lift - Pick 2 from VLV. No overhead positions or knee pain ranges.</p>
+      </div>
+      
+      <div class="info-box">
+        <h3>WEDNESDAY RECOVERY DAY - MOBILITY LONG BLOCK (20-25 MIN)</h3>
+        <ul>
+          <li><strong>Feet/ankles:</strong> Plantar roll 90 s/foot, band dorsiflexion 2×60 s/side, slant-board calf lowers 2×12</li>
+          <li><strong>Knee-friendly isos:</strong> Wall-sit 2×45 s, split-squat ISO mid-range 2×30-45 s/side (pain-free)</li>
+          <li><strong>Adductors:</strong> Frog rocks 2×12</li>
+          <li><strong>T-spine:</strong> Cat-camel 8, open-book 8/side</li>
+          <li><strong>Close with:</strong> 6 slow breaths (5 s in, 8-10 s out)</li>
+        </ul>
+        <p style="margin-top: 10px;"><strong>Optional:</strong> Walk or bike 20-30 min nasal only (skip if knee puffy)</p>
+      </div>
+      
+      <div class="info-box">
+        <h3>SATURDAY RECOVERY DAY - MOBILITY LONG BLOCK (20-25 MIN)</h3>
+        <ul>
+          <li><strong>Feet/ankles:</strong> Plantar roll 90 s/foot, band dorsiflexion 2×60 s/side, slant-board lowers 2×12</li>
+          <li><strong>Adductors/hips:</strong> Frog rocks 2×12, cossack squats 2×8/side</li>
+          <li><strong>Low back:</strong> 90/90 breathing 2×6, dead bug 2×8/side</li>
+          <li><strong>Close with:</strong> 6 slow breaths</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>SUNDAY - FULL RECOVERY</h3>
+        <ul>
+          <li>Easy 10-15 min walk</li>
+          <li>Breathwork 4 min</li>
+          <li>Daily Vault 10-12 min</li>
+          <li><strong>Night routine:</strong> Guided visualization, 10 min soft tissue, room 65-68°F, phone away</li>
         </ul>
       </div>
       
       <div class="warning-box">
-        <h3>INJURY MANAGEMENT</h3>
+        <h3>INJURY MANAGEMENT & GUARDRAILS</h3>
         <ul>
-          <li><strong>Right shoulder:</strong> Keep loads in pain-free arcs. Use neutral grips</li>
-          <li><strong>Left knee:</strong> If swells, elevate and add compression</li>
-          <li><strong>New pain:</strong> Remove trigger, hold isometric 30-45 s at pain-free angle</li>
+          <li><strong>Right shoulder:</strong> Keep loads in pain-free arcs. Use neutral grips. No straight-bar overhead. No strict pull-ups. If pain shows up, switch to mid-range ISO 30-45 s in a safe angle</li>
+          <li><strong>Left knee:</strong> If swells, elevate after lifts, add 5-10 min compression, use wall-sit 2×45 s instead of any deep flexion that hurts</li>
+          <li><strong>New pain:</strong> Remove trigger immediately, hold isometric 30-45 s at pain-free angle</li>
         </ul>
       </div>
       
@@ -1219,31 +1240,101 @@
         <h3>SLEEP & RECOVERY TARGETS</h3>
         <ul>
           <li><strong>Sleep target:</strong> 8.5+ hours</li>
-          <li><strong>If sleep ≤6 hours:</strong> Cut training volume 20%</li>
+          <li><strong>If sleep ≤6 hours:</strong> Cut training volume 20%, remove jumps that day</li>
           <li><strong>Room temperature:</strong> 65-68°F</li>
+          <li><strong>Stress level 5:</strong> Cut gym volume 20%, remove jumps, add a nap</li>
         </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>SAUNA/HOT TUB (OPTIONAL 2-3X/WEEK)</h3>
+        <ul>
+          <li>10-15 min easy heat (not right before lifts)</li>
+          <li>Re-hydrate +1 L water and +1 g sodium after</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>WEEKLY CHECK-IN (SEND FRIDAY DM)</h3>
+        <ol>
+          <li>Lift difficulty 1-10</li>
+          <li>Soreness map</li>
+          <li>Energy 1-10</li>
+          <li>Weight trend</li>
+          <li>Is technical work clicking</li>
+        </ol>
+        <p style="margin-top: 10px; color: var(--gray);">YouTube demos first. DM VLV if confused.</p>
       </div>
     </div>
   </div>
 </main>
 
 <script>
+// Initialize current week
+let currentWeek = 1;
+
 // Tab navigation
+document.addEventListener('DOMContentLoaded', function() {
+  // Navigation button clicks
+  const navButtons = document.querySelectorAll('.nav-btn');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const tabName = this.dataset.tab;
+      showTab(tabName);
+    });
+  });
+  
+  // Week selection buttons
+  const weekButtons = document.querySelectorAll('.week-select-btn');
+  weekButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      selectWeek(parseInt(this.dataset.week));
+    });
+  });
+  
+  // Print buttons
+  const printButtons = document.querySelectorAll('.print-btn');
+  printButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      printDay(this.dataset.day);
+    });
+  });
+  
+  // Export button
+  const exportBtn = document.getElementById('export-btn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportData);
+  }
+  
+  // Weight inputs
+  const weightInputs = document.querySelectorAll('.weight-input');
+  weightInputs.forEach(input => {
+    // Load saved weight
+    loadWeight(input);
+    
+    // Save on change
+    input.addEventListener('change', function() {
+      saveWeight(this);
+    });
+  });
+});
+
 function showTab(tabName) {
+  // Hide all tabs
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(tab => tab.classList.remove('active'));
   
+  // Show selected tab
   const selectedTab = document.getElementById(tabName);
-  if (selectedTab) selectedTab.classList.add('active');
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+  }
   
+  // Update nav buttons
   const buttons = document.querySelectorAll('.nav-btn');
   buttons.forEach(btn => {
     btn.classList.remove('active');
-    if (btn.textContent.toLowerCase().includes(tabName) || 
-        (tabName === 'overview' && btn.textContent === 'OVERVIEW') ||
-        (tabName === 'weekly' && btn.textContent === 'WEEKLY PROGRAM') ||
-        (tabName === 'nutrition' && btn.textContent === 'NUTRITION') ||
-        (tabName === 'recovery' && btn.textContent === 'RECOVERY')) {
+    if (btn.dataset.tab === tabName) {
       btn.classList.add('active');
     }
   });
@@ -1251,11 +1342,9 @@ function showTab(tabName) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Week selection
-let currentWeek = 1;
-
 function selectWeek(weekNum) {
   currentWeek = weekNum;
+  
   const weekInfo = document.getElementById('week-info');
   const weekDescriptions = {
     1: { title: 'WEEK 1 - FOUNDATION', desc: 'Focus: Movement patterns, base building, technique refinement' },
@@ -1273,18 +1362,22 @@ function selectWeek(weekNum) {
     `;
   }
   
+  // Update week buttons
   const weekButtons = document.querySelectorAll('.week-select-btn');
-  weekButtons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
+  weekButtons.forEach(btn => {
+    btn.classList.remove('active');
+    if (parseInt(btn.dataset.week) === weekNum) {
+      btn.classList.add('active');
+    }
+  });
   
-  // Update weight inputs for the selected week
+  // Update all weight inputs for the selected week
   document.querySelectorAll('.weight-input').forEach(input => {
     input.dataset.week = weekNum.toString();
     loadWeight(input);
   });
 }
 
-// Print functionality
 function printDay(day) {
   const dayCard = document.getElementById(`${day}-workout`);
   if (!dayCard) return;
@@ -1357,503 +1450,6 @@ function printDay(day) {
   }, 250);
 }
 
-// Exercise Substitution Functions
-let currentExercise = '';
-let currentExerciseDetails = '';
-
-function openSubModal(exerciseName, exerciseDetails) {
-  currentExercise = exerciseName;
-  currentExerciseDetails = exerciseDetails || '';
-  
-  // Check if modal already exists
-  let modal = document.getElementById('subModal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.id = 'subModal';
-    document.body.appendChild(modal);
-  }
-  
-  modal.innerHTML = `
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-title">EXERCISE SUBSTITUTION</div>
-        <button class="close-btn" onclick="closeSubModal()">&times;</button>
-      </div>
-      <div id="exerciseInfo">
-        <div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 5px;">
-          <p style="color: var(--yellow); font-weight: bold;">Original Exercise:</p>
-          <p style="color: var(--white);">${exerciseName} ${exerciseDetails ? '- ' + exerciseDetails : ''}</p>
-        </div>
-      </div>
-      <input type="text" class="sub-input" id="equipmentInput" placeholder="What equipment do you have available? (e.g., dumbbells, bands, bodyweight only)">
-      <button class="sub-button" id="getSubBtn" onclick="getSubstitution()">GET SUBSTITUTION</button>
-      <div id="subResult"></div>
-    </div>
-  `;
-  
-  modal.classList.add('active');
-}
-
-function closeSubModal() {
-  const modal = document.getElementById('subModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.getElementById('subResult').innerHTML = '';
-    document.getElementById('equipmentInput').value = '';
-  }
-}
-
-// Comprehensive exercise substitutions database
-const exerciseSubstitutions = {
-  // Lower Body - Power
-  'footwork sled push': {
-    'bodyweight': 'Bear Crawl Sprints (7 sec), Wall Sits with rapid foot taps, or High Knee Sprints in place',
-    'dumbbells': 'Farmer Walk with high knees, Dumbbell Walking Lunges with explosive drive',
-    'bands': 'Band-resisted marching, Band-resisted high knees, or Lateral band walks with speed',
-    'general': 'Hill sprints, Prowler push alternative with partner resistance'
-  },
-  'sled push': {
-    'bodyweight': 'Bear Crawl Sprints (7 sec), Wall Sits with rapid foot taps, or High Knee Sprints in place',
-    'dumbbells': 'Farmer Walk with high knees, Dumbbell Walking Lunges with explosive drive',
-    'bands': 'Band-resisted marching, Band-resisted high knees, or Lateral band walks with speed',
-    'general': 'Hill sprints, Prowler push alternative with partner resistance'
-  },
-  'box jump': {
-    'bodyweight': 'Jump Squats, Broad Jumps, Depth Jumps from small height, or Tuck Jumps',
-    'dumbbells': 'Dumbbell Jump Squats, Weighted Step-Ups with explosive drive',
-    'bands': 'Band-assisted jumps for height, Banded squat jumps',
-    'general': 'Stair jumps, Park bench step-ups with jump'
-  },
-  'single leg box jump': {
-    'bodyweight': 'Single Leg Bounds, Single Leg Broad Jumps, Skater Hops',
-    'dumbbells': 'Single Leg Box Step-ups with knee drive, Weighted single leg jumps',
-    'bands': 'Band-assisted single leg jumps, Band-resisted single leg bounds',
-    'general': 'Stair hops on one leg, Single leg depth jumps'
-  },
-  
-  // Lower Body - Strength
-  'box squat': {
-    'bodyweight': 'Pause Squats to bench/chair, Wall Sits (5 sec holds), Bulgarian Split Squats',
-    'dumbbells': 'Goblet Box Squats, Dumbbell Front Squats with pause, Goblet Squats to bench',
-    'bands': 'Banded Box Squats, Band-resisted squats with 5 sec eccentric',
-    'general': 'Any squat variation with controlled eccentric and pause at bottom'
-  },
-  'trap bar rfess': {
-    'bodyweight': 'Bulgarian Split Squats with 3 sec eccentric, Rear Foot Elevated Split Squats',
-    'dumbbells': 'DB Bulgarian Split Squats, DB Lunges with rear foot elevated',
-    'bands': 'Band-resisted split squats, Band-assisted pistol squats',
-    'general': 'Single leg squats to box, Assisted pistol squats'
-  },
-  'barbell step up': {
-    'bodyweight': 'High Box Step-ups, Deficit Reverse Lunges, Box Step-ups with knee drive',
-    'dumbbells': 'Dumbbell Step-ups, Weighted Lunges, DB Box Step-ups',
-    'bands': 'Band-resisted step-ups, Band-resisted lunges',
-    'general': 'Stairs or park bench step-ups, Hill walking lunges'
-  },
-  'step up': {
-    'bodyweight': 'High Box Step-ups, Deficit Reverse Lunges, Box Step-ups with knee drive',
-    'dumbbells': 'Dumbbell Step-ups, Weighted Lunges, DB Box Step-ups',
-    'bands': 'Band-resisted step-ups, Band-resisted lunges',
-    'general': 'Stairs or park bench step-ups, Hill walking lunges'
-  },
-  'goblet squat': {
-    'bodyweight': 'Deep Bodyweight Squats, Jump Squats, Prisoner Squats',
-    'dumbbells': 'Dumbbell Front Squats, Dumbbell Goblet Squats',
-    'bands': 'Band Goblet Squats, Band Front Squats',
-    'general': 'Front Squats with any weight, Zercher Squats'
-  },
-  'single leg rdl': {
-    'bodyweight': 'Single Leg RDL (bodyweight), Single Leg Good Mornings',
-    'dumbbells': 'DB Single Leg RDL, DB Single Leg Deadlift',
-    'bands': 'Band Single Leg RDL, Band Good Mornings',
-    'general': 'Any single leg hip hinge movement'
-  },
-  'curtsy lunge': {
-    'bodyweight': 'Bodyweight Curtsy Lunges, Lateral Lunges, Cossack Squats',
-    'dumbbells': 'DB Curtsy Lunges, DB Lateral Lunges',
-    'bands': 'Band-resisted Curtsy Lunges, Lateral Band Walks',
-    'general': 'Any lateral/diagonal lunge variation'
-  },
-  'glute bridge': {
-    'bodyweight': 'Single Leg Glute Bridges, Hip Thrusts, Marching Glute Bridges',
-    'dumbbells': 'DB Glute Bridges, Weighted Hip Thrusts',
-    'bands': 'Band Glute Bridges, Band Hip Thrusts',
-    'general': 'Any hip extension exercise'
-  },
-  'cross over step up': {
-    'bodyweight': 'Lateral Step-ups, Curtsy Step-ups, Crossover Lunges',
-    'dumbbells': 'DB Crossover Step-ups, Weighted Lateral Step-ups',
-    'bands': 'Band-resisted Lateral Steps',
-    'general': 'Any lateral stepping movement'
-  },
-  
-  // Pass Protection Drills
-  'banded pass set power step': {
-    'bodyweight': 'Shadow pass sets with focus on footwork, Wall sits with arm punches',
-    'dumbbells': 'DB held at chest during pass set footwork, Weighted stance work',
-    'bands': 'Band around waist for partner-resisted sets, Band punch-outs in stance',
-    'general': 'Partner hand fighting drills, Mirror drill with partner'
-  },
-  'power step': {
-    'bodyweight': 'Shadow pass sets with focus on footwork, Wall sits with arm punches',
-    'dumbbells': 'DB held at chest during pass set footwork, Weighted stance work',
-    'bands': 'Band around waist for partner-resisted sets, Band punch-outs in stance',
-    'general': 'Partner hand fighting drills, Mirror drill with partner'
-  },
-  'banded pass set kick step': {
-    'bodyweight': 'Lateral lunges with reach, Cossack squats, Lateral bounds',
-    'dumbbells': 'DB lateral lunges, Weighted lateral steps',
-    'bands': 'Lateral band walks in pass set stance, Band-resisted lateral slides',
-    'general': 'Slide board lateral movements, Partner-resisted lateral steps'
-  },
-  'kick step': {
-    'bodyweight': 'Lateral lunges with reach, Cossack squats, Lateral bounds',
-    'dumbbells': 'DB lateral lunges, Weighted lateral steps',
-    'bands': 'Lateral band walks in pass set stance, Band-resisted lateral slides',
-    'general': 'Slide board lateral movements, Partner-resisted lateral steps'
-  },
-  'banded lateral neck': {
-    'bodyweight': 'Lateral shuffle to vertical jump, Lateral bounds, Speed skaters',
-    'dumbbells': 'DB lateral lunges to press, Weighted lateral jumps',
-    'bands': 'Lateral band walks with speed, Band-resisted shuffles',
-    'general': 'Cone drills with lateral movement, Agility ladder lateral work'
-  },
-  'kick to power': {
-    'bodyweight': 'Lateral shuffle to vertical jump, Lateral bounds, Speed skaters',
-    'dumbbells': 'DB lateral lunges to press, Weighted lateral jumps',
-    'bands': 'Lateral band walks with speed, Band-resisted shuffles',
-    'general': 'Cone drills with lateral movement, Agility ladder lateral work'
-  },
-  'power to kick': {
-    'bodyweight': 'Lateral shuffle to vertical jump, Lateral bounds, Speed skaters',
-    'dumbbells': 'DB lateral lunges to press, Weighted lateral jumps',
-    'bands': 'Lateral band walks with speed, Band-resisted shuffles',
-    'general': 'Cone drills with lateral movement, Agility ladder lateral work'
-  },
-  
-  // Upper Body - Push
-  'barbell bench press': {
-    'bodyweight': 'Push-ups (regular, wide, diamond), Decline push-ups, Explosive push-ups',
-    'dumbbells': 'Dumbbell Bench Press, DB Floor Press, DB Flyes',
-    'bands': 'Band Chest Press, Band Push-ups, Band Flyes',
-    'general': 'Any horizontal pressing movement'
-  },
-  'bench press': {
-    'bodyweight': 'Push-ups (regular, wide, diamond), Decline push-ups, Explosive push-ups',
-    'dumbbells': 'Dumbbell Bench Press, DB Floor Press, DB Flyes',
-    'bands': 'Band Chest Press, Band Push-ups, Band Flyes',
-    'general': 'Any horizontal pressing movement'
-  },
-  'incline bench': {
-    'bodyweight': 'Pike Push-ups, Decline Push-ups, Handstand Push-ups (assisted)',
-    'dumbbells': 'Incline DB Press, Arnold Press, DB Shoulder Press',
-    'bands': 'Band Incline Press, Band Shoulder Press',
-    'general': 'Any incline or shoulder pressing movement'
-  },
-  'landmine press': {
-    'bodyweight': 'Single Arm Push-ups, Archer Push-ups, T-Push-ups',
-    'dumbbells': 'Single Arm DB Press, DB Clean and Press',
-    'bands': 'Single Arm Band Press, Band Punches',
-    'general': 'Any unilateral pressing movement'
-  },
-  
-  // Upper Body - Pull
-  'pull-up': {
-    'bodyweight': 'Inverted Rows (under table/bar), Door Frame Rows, Dead Hangs',
-    'dumbbells': 'Bent Over DB Rows, DB Pullovers, Renegade Rows',
-    'bands': 'Band Lat Pulldowns, Band-assisted Pull-ups, Band Rows',
-    'general': 'Any vertical pulling movement'
-  },
-  'chin-up': {
-    'bodyweight': 'Supinated Inverted Rows, Close-grip inverted rows',
-    'dumbbells': 'DB Rows with supinated grip, DB Curls to Rows',
-    'bands': 'Band-assisted Chin-ups, Band Curls to Rows',
-    'general': 'Any supinated pulling movement'
-  },
-  'trx row': {
-    'bodyweight': 'Inverted Row under table, Door frame rows, Superman pulls',
-    'dumbbells': 'Bent Over DB Rows, Chest-Supported DB Rows',
-    'bands': 'Band Rows, Band Face Pulls',
-    'general': 'Any horizontal pulling movement'
-  },
-  '1 arm row': {
-    'bodyweight': 'Single Arm Inverted Rows, Archer Rows',
-    'dumbbells': 'Single DB Row, Kroc Rows, Meadows Rows',
-    'bands': 'Single Arm Band Rows, Band Saws',
-    'general': 'Any unilateral rowing movement'
-  },
-  
-  // Accessory Work
-  'hip airplane': {
-    'bodyweight': 'Single Leg RDL (bodyweight), Bird Dogs, Single Leg Glute Bridges',
-    'dumbbells': 'DB Single Leg RDL, DB Single Leg Deadlift',
-    'bands': 'Band Single Leg RDL, Band Hip Abduction',
-    'general': 'Any single leg hip stability exercise'
-  },
-  'tib bar raise': {
-    'bodyweight': 'Wall Tibialis Raises, Heel Walks, Toe Raises against wall',
-    'dumbbells': 'DB held for resistance during tibialis raises',
-    'bands': 'Band around foot for tibialis raises, Band dorsiflexion',
-    'general': 'Any tibialis/shin strengthening exercise'
-  },
-  'tib raise': {
-    'bodyweight': 'Wall Tibialis Raises, Heel Walks, Toe Raises against wall',
-    'dumbbells': 'DB held for resistance during tibialis raises',
-    'bands': 'Band around foot for tibialis raises, Band dorsiflexion',
-    'general': 'Any tibialis/shin strengthening exercise'
-  },
-  'banded seated calf': {
-    'bodyweight': 'Single Leg Calf Raises, Jump Rope, Pogo Jumps',
-    'dumbbells': 'DB Calf Raises, Weighted calf raises',
-    'bands': 'Standing Band Calf Raises',
-    'general': 'Any calf strengthening exercise'
-  },
-  'calf raise': {
-    'bodyweight': 'Single Leg Calf Raises, Jump Rope, Pogo Jumps',
-    'dumbbells': 'DB Calf Raises, Weighted calf raises',
-    'bands': 'Standing Band Calf Raises',
-    'general': 'Any calf strengthening exercise'
-  },
-  'dead bugs': {
-    'bodyweight': 'Dead Bugs (standard), Bird Dogs, Hollow Body Holds',
-    'dumbbells': 'Weighted Dead Bugs (light DB)',
-    'bands': 'Band Dead Bugs, Band Pallof Press',
-    'general': 'Any anti-extension core exercise'
-  },
-  'dead bug': {
-    'bodyweight': 'Dead Bugs (standard), Bird Dogs, Hollow Body Holds',
-    'dumbbells': 'Weighted Dead Bugs (light DB)',
-    'bands': 'Band Dead Bugs, Band Pallof Press',
-    'general': 'Any anti-extension core exercise'
-  },
-  'pallof press': {
-    'bodyweight': 'Side Planks, Bear Crawl Holds, Bird Dogs',
-    'dumbbells': 'DB Wood Chops, Suitcase Carries',
-    'bands': 'Band Pallof Press, Band Wood Chops',
-    'general': 'Any anti-rotation core exercise'
-  },
-  'band pull apart': {
-    'bodyweight': 'Wall Slides, Prone Y-T-W Raises, Reverse Snow Angels',
-    'dumbbells': 'DB Reverse Flyes, DB High Pulls',
-    'bands': 'Band Pull Aparts, Band Face Pulls',
-    'general': 'Any rear delt/upper back exercise'
-  },
-  'face pull': {
-    'bodyweight': 'Wall Slides, Prone Y-T-W Raises',
-    'dumbbells': 'DB High Pulls, DB Reverse Flyes',
-    'bands': 'Band Face Pulls, Band Pull Aparts',
-    'general': 'Any rear delt/upper back exercise'
-  },
-  'tricep': {
-    'bodyweight': 'Diamond Push-ups, Dips (chair/bench), Close-grip Push-ups',
-    'dumbbells': 'DB Tricep Extensions, DB Kickbacks',
-    'bands': 'Band Tricep Pushdowns, Band Overhead Extensions',
-    'general': 'Any tricep isolation exercise'
-  },
-  'curl': {
-    'bodyweight': 'Chin-ups, Inverted Curls',
-    'dumbbells': 'DB Curls, Hammer Curls, Concentration Curls',
-    'bands': 'Band Curls, Band Hammer Curls',
-    'general': 'Any bicep isolation exercise'
-  },
-  'powell raise': {
-    'bodyweight': 'Wall Slides, Prone Y Raises',
-    'dumbbells': 'Light DB Y Raises, DB Lateral Raises',
-    'bands': 'Band Y Raises, Band Lateral Raises',
-    'general': 'Any rear delt/rotator cuff exercise'
-  },
-  'shrug': {
-    'bodyweight': 'Wall Handstand Shrugs, Inverted Shrugs',
-    'dumbbells': 'DB Shrugs, DB Farmer Walks',
-    'bands': 'Band Shrugs, Band High Pulls',
-    'general': 'Any trap strengthening exercise'
-  },
-  
-  // Neck Work
-  'neck bridge': {
-    'bodyweight': 'Isometric neck holds (hand resistance), Wall neck leans',
-    'dumbbells': 'Light DB neck flexion/extension (careful)',
-    'bands': 'Band neck exercises (all directions)',
-    'general': 'Partner-resisted neck work, Manual resistance'
-  },
-  'neck iso': {
-    'bodyweight': 'Isometric neck holds with hand resistance',
-    'dumbbells': 'Lying neck flexion with light weight',
-    'bands': 'Band neck flexion, Band neck holds',
-    'general': 'Any neck strengthening exercise'
-  },
-  
-  // Med Ball
-  'med ball punch': {
-    'bodyweight': 'Shadow Boxing, Explosive Push-ups, Plyo Push-ups',
-    'dumbbells': 'DB Punches, DB Press Throws',
-    'bands': 'Band Punches, Band Chest Press (explosive)',
-    'general': 'Any explosive upper body movement'
-  }
-};
-
-function getSubstitution() {
-  const equipment = document.getElementById('equipmentInput').value.trim().toLowerCase();
-  const resultDiv = document.getElementById('subResult');
-  const btn = document.getElementById('getSubBtn');
-  
-  if (!equipment) {
-    resultDiv.innerHTML = '<p style="color: var(--red);">Please specify what equipment you have available.</p>';
-    return;
-  }
-  
-  btn.disabled = true;
-  btn.textContent = 'FINDING ALTERNATIVES...';
-  
-  // Clean up exercise name for matching
-  const exerciseLower = currentExercise.toLowerCase().replace(/[^\w\s]/g, '');
-  
-  // Try to find a match
-  let foundSub = null;
-  let bestMatch = null;
-  
-  // First try exact match
-  for (const [key, subs] of Object.entries(exerciseSubstitutions)) {
-    if (exerciseLower.includes(key) || key.includes(exerciseLower.split(' ')[0])) {
-      bestMatch = key;
-      
-      // Check for equipment match
-      if (equipment.includes('bodyweight') || equipment.includes('body weight') || equipment.includes('none')) {
-        foundSub = subs.bodyweight;
-      } else if (equipment.includes('dumbbell') || equipment.includes('db')) {
-        foundSub = subs.dumbbells;
-      } else if (equipment.includes('band') || equipment.includes('resistance')) {
-        foundSub = subs.bands;
-      } else {
-        foundSub = subs.general || subs.bodyweight;
-      }
-      break;
-    }
-  }
-  
-  // Display results
-  if (foundSub) {
-    resultDiv.innerHTML = `
-      <div class="substitution-result">
-        <h4>Recommended Substitutions:</h4>
-        <p style="color: var(--yellow); margin-bottom: 10px;">For ${currentExercise} with ${equipment}:</p>
-        <p>${foundSub}</p>
-        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border);">
-          <p style="font-size: 0.9em; color: var(--gray);">Tips:</p>
-          <ul style="font-size: 0.9em; margin-top: 5px;">
-            <li>Match the original tempo and rep scheme</li>
-            <li>Focus on the same movement pattern</li>
-            <li>Adjust load/difficulty to match RPE</li>
-          </ul>
-        </div>
-      </div>
-    `;
-  } else {
-    // Provide general guidelines based on movement pattern
-    const movementPattern = detectMovementPattern(exerciseLower);
-    resultDiv.innerHTML = `
-      <div class="substitution-result">
-        <h4>General Substitution Guidelines:</h4>
-        <p style="color: var(--yellow); margin-bottom: 10px;">For ${currentExercise}:</p>
-        ${getGeneralGuidelines(movementPattern, equipment)}
-        <div style="margin-top: 15px; padding: 10px; background: rgba(255,87,34,0.1); border: 1px solid var(--red); border-radius: 5px;">
-          <p style="font-size: 0.9em;">Can't find a perfect match? Contact your coach for personalized alternatives.</p>
-        </div>
-      </div>
-    `;
-  }
-  
-  btn.disabled = false;
-  btn.textContent = 'GET SUBSTITUTION';
-}
-
-function detectMovementPattern(exercise) {
-  const patterns = {
-    squat: ['squat', 'goblet', 'box squat', 'lunge', 'split'],
-    hinge: ['deadlift', 'rdl', 'swing', 'hip', 'good morning'],
-    push: ['press', 'bench', 'push', 'tricep', 'dip'],
-    pull: ['row', 'pull', 'chin', 'lat', 'curl'],
-    carry: ['carry', 'walk', 'hold', 'farmer'],
-    jump: ['jump', 'bound', 'hop', 'plyo', 'box'],
-    core: ['plank', 'dead bug', 'pallof', 'ab', 'core']
-  };
-  
-  for (const [pattern, keywords] of Object.entries(patterns)) {
-    if (keywords.some(keyword => exercise.includes(keyword))) {
-      return pattern;
-    }
-  }
-  return 'general';
-}
-
-function getGeneralGuidelines(pattern, equipment) {
-  const guidelines = {
-    squat: `
-      <p>Squat pattern alternatives with ${equipment}:</p>
-      <ul>
-        <li>Focus on knee-dominant movements</li>
-        <li>Maintain upright torso position</li>
-        <li>Options: Air squats, lunges, step-ups, wall sits</li>
-        <li>Add tempo work to increase difficulty without load</li>
-      </ul>
-    `,
-    hinge: `
-      <p>Hinge pattern alternatives with ${equipment}:</p>
-      <ul>
-        <li>Focus on hip-dominant movements</li>
-        <li>Emphasize glutes and hamstrings</li>
-        <li>Options: Good mornings, single-leg RDLs, bridges</li>
-        <li>Use slow eccentrics to increase challenge</li>
-      </ul>
-    `,
-    push: `
-      <p>Push pattern alternatives with ${equipment}:</p>
-      <ul>
-        <li>Horizontal: Push-up variations</li>
-        <li>Vertical: Pike push-ups, handstand progressions</li>
-        <li>Add pauses or tempo to increase difficulty</li>
-      </ul>
-    `,
-    pull: `
-      <p>Pull pattern alternatives with ${equipment}:</p>
-      <ul>
-        <li>Horizontal: Inverted rows under sturdy table</li>
-        <li>Vertical: Door frame pulls, towel rows</li>
-        <li>Focus on squeezing shoulder blades together</li>
-      </ul>
-    `,
-    jump: `
-      <p>Plyometric alternatives with ${equipment}:</p>
-      <ul>
-        <li>Jumps: Squat jumps, split jumps, bounds</li>
-        <li>Low impact: Fast step-ups, quick feet drills</li>
-        <li>Focus on explosive intent even with less load</li>
-      </ul>
-    `,
-    core: `
-      <p>Core alternatives with ${equipment}:</p>
-      <ul>
-        <li>Anti-extension: Planks, hollow holds</li>
-        <li>Anti-rotation: Side planks, bird dogs</li>
-        <li>Anti-flexion: Superman, back extensions</li>
-      </ul>
-    `,
-    general: `
-      <p>General substitution principles:</p>
-      <ul>
-        <li>Match the movement pattern as closely as possible</li>
-        <li>Target the same muscle groups</li>
-        <li>Adjust tempo, pauses, or volume to match intensity</li>
-        <li>When in doubt, ask your coach for guidance</li>
-      </ul>
-    `
-  };
-  
-  return guidelines[pattern] || guidelines.general;
-}
-
-// Export data
 function exportData() {
   const data = {};
   for (let i = 0; i < localStorage.length; i++) {
@@ -1878,11 +1474,12 @@ function exportData() {
   alert('Data exported successfully!');
 }
 
-// Weight tracking
 function loadWeight(input) {
   const key = `${input.dataset.exercise}-week${input.dataset.week}`;
   const saved = localStorage.getItem(key);
-  if (saved) input.value = saved;
+  if (saved) {
+    input.value = saved;
+  }
 }
 
 function saveWeight(input) {
@@ -1892,61 +1489,9 @@ function saveWeight(input) {
   const savedIndicator = input.nextElementSibling;
   if (savedIndicator) {
     savedIndicator.classList.add('show');
-    setTimeout(() => savedIndicator.classList.remove('show'), 2000);
-  }
-}
-
-// Initialize on load
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize weight tracking
-  document.querySelectorAll('.weight-input').forEach(input => {
-    const week = input.dataset.week || '1';
-    const key = `${input.dataset.exercise}-week${week}`;
-    const saved = localStorage.getItem(key);
-    
-    if (saved) {
-      input.value = saved;
-    }
-    
-    input.addEventListener('change', function() {
-      saveWeight(this);
-    });
-  });
-  
-  // Add substitution buttons to exercises
-  addSubstitutionButtons();
-});
-
-// Add substitution buttons function
-function addSubstitutionButtons() {
-  document.querySelectorAll('.exercise-item').forEach(item => {
-    const nameElement = item.querySelector('.exercise-name');
-    const detailsElement = item.querySelector('.exercise-details');
-    
-    if (nameElement && !item.querySelector('.sub-link')) {
-      const linkElement = nameElement.querySelector('a');
-      const exerciseName = linkElement ? linkElement.textContent : nameElement.textContent;
-      const exerciseDetails = detailsElement ? detailsElement.textContent : '';
-      
-      const subBtn = document.createElement('button');
-      subBtn.className = 'sub-link';
-      subBtn.textContent = 'SUB';
-      subBtn.title = 'Get exercise substitution';
-      subBtn.onclick = function(e) {
-        e.stopPropagation();
-        openSubModal(exerciseName, exerciseDetails);
-      };
-      
-      nameElement.appendChild(subBtn);
-    }
-  });
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-  const modal = document.getElementById('subModal');
-  if (event.target == modal) {
-    closeSubModal();
+    setTimeout(() => {
+      savedIndicator.classList.remove('show');
+    }, 2000);
   }
 }
 </script>
